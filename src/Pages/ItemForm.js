@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import baseURL from '../constants';
 
 
 
@@ -44,7 +45,7 @@ const ItemForm = (props) => {
           body: raw
         };
         
-        fetch("http://localhost:3003/item/", requestOptions)
+        fetch(`${baseURL}/item/`, requestOptions)
           .then(response => response.text())
           .then(result => {console.log(result)
             navigate('/');
@@ -52,14 +53,10 @@ const ItemForm = (props) => {
           .catch(error => console.log('error', error));
         
         
-        
-
-        
     }
     
     return <div>
         
-        {params.listId}
         <form>
             <div className="mb-3">
                 <label for="title" className="form-label">Title</label>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import baseURL from '../constants';
 
 
 function Item(props) {
@@ -11,7 +12,7 @@ function Item(props) {
   const toggleStatus = async (itemId) => {
       let statusRequested = status.toUpperCase() === 'COMPLETED' ? "PENDING" : 'COMPLETED' ;
       
-      const url = `http://localhost:3003/item/${itemId}`;
+      const url = `${baseURL}/item/${itemId}`;
 
       const myHeaders = {"Content-Type": "application/json"}
   
@@ -43,7 +44,7 @@ function Item(props) {
     {
         (props.item && Object.keys(props.item).length!==0) ? 
  
-        <div className = "card">
+        <div className = "card" style={{margin: '10px' }}>
           <div className = "card-header">
               {priorityArray[props.item.priority]}
           </div>

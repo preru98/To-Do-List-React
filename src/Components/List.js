@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+import baseURL from '../constants';
 
 import Items from './Items';
 import ListForm from '../Pages/ListForm';
@@ -15,7 +16,7 @@ const List = (props) => {
 
     const fetchItemsofList = async listId => {
         console.log("LIST:::", listId);
-        const url = `http://localhost:3003/list/${listId}/items`;
+        const url = `${baseURL}/list/${listId}/items`;
         console.log("LIST:::", url);
         try{
             const response = await fetch(url);
@@ -38,7 +39,7 @@ const List = (props) => {
                     props.allLists.map( (list, index) => {
 
                         return <div className="list-group" >
-                            < div className="list-group-item active" style={{display: 'flex', justifyContent: 'space-between'}} onClick = { ()=> { console.log("?????",list._id) ; index === currentlyOpenedListIndex ? setCurrentlyOpenedListIndex(null) : setCurrentlyOpenedListIndex(index); fetchItemsofList(list._id)}}>
+                            < div className="list-group-item active" style={{display: 'flex', justifyContent: 'space-between', margin: '15px'}} onClick = { ()=> { console.log("?????",list._id) ; index === currentlyOpenedListIndex ? setCurrentlyOpenedListIndex(null) : setCurrentlyOpenedListIndex(index); fetchItemsofList(list._id)}}>
                                 <span>
                                     {list.name}
                                 </span>

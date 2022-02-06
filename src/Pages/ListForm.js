@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import baseURL from '../constants';
+import { useNavigate } from 'react-router-dom';
+
 
 const ListForm = () => {
-
+    
+    const navigate = useNavigate();
+    
     const [name, setName] = useState(null);
 
     const onChangeName = (event) => {
@@ -21,9 +26,11 @@ const ListForm = () => {
           body: raw
         };
         
-        fetch("http://localhost:3003/list/", requestOptions)
+        fetch(`${baseURL}/list/`, requestOptions)
           .then(response => response.text())
-          .then(result => console.log(result))
+          .then(result => {console.log(result)
+            navigate('/');
+          })
           .catch(error => console.log('error', error));
     }
 

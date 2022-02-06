@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Lists from '../Components/List';
+import baseURL from '../constants';
 
 function HomePage() {
 
     const [lists, setLists] = useState(null);
 
     useEffect(() => {
-        const url = "http://localhost:3003/list/";
+        const url = `${baseURL}/list/`;
     
         const fetchData = async () => {
           try {
